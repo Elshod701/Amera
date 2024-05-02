@@ -104,6 +104,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+
       <div className="footer-bottom bg-[#202935] py-[30px] flex items-center justify-between">
         <div className="container flex items-center justify-between">
           <div className="flex items-center">

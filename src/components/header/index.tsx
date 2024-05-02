@@ -8,7 +8,7 @@ import { Button } from "../ui/button";
 import { CiStar } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
-import { DropdownMenu } from "../ui/dropdown-menu";
+
 const Header = () => {
   return (
     <header>
@@ -31,7 +31,7 @@ const Header = () => {
           <Link href="/">
             <Image src={logo} width={150} alt="Picture of the author" />
           </Link>
-          
+
           <div className="flex items-center  gap-10">
             <div className="flex items-center gap-1">
               <GiHeadphones className="text-5xl" />
@@ -71,11 +71,11 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="nav-bottom h-[55px] items-center justify-between">
+      <div className="nav-bottom h-[55px] flex items-center justify-center bg-stone-400">
         <div className="container">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, veniam
-          saepe! Labore quam consequatur, ex laudantium, culpa hic ad a quos
-          necessitatibus distinctio quo! Earum velit corporis magnam eius autem?
+          <div className="wrapper flex items-center justify-between  h-[100%] bg-slate-500">
+            select option
+          </div>
         </div>
       </div>
     </header>
