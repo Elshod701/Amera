@@ -18,8 +18,8 @@ export const useGetCategories = async (): Promise<CategoryType> => {
     if (!res.ok) {
       throw new Error("Failed to fetch categories");
     }
-    const banners = res.json();
-    return banners;
+    const categories = res.json();
+    return categories;
   } catch (error) {
     throw new Error("Failed to fetch categories");
   }
