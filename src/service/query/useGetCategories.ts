@@ -12,7 +12,7 @@ export interface CategoryType {
   ];
 }
 
-export const useGetBanners = async (): Promise<CategoryType> => {
+export const useGetCategories = async (): Promise<CategoryType> => {
   try {
     const res = await fetch("http://135.181.108.207/category/");
     if (!res.ok) {

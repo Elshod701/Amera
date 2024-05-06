@@ -71,9 +71,9 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="nav-bottom h-[55px] flex items-center justify-center bg-stone-400">
+      <div className="nav-bottom h-[55px] flex items-center justify-center ">
         <div className="container">
-          <div className="wrapper flex items-center justify-between  h-[100%] bg-slate-500">
+          <div className="wrapper flex items-center justify-between  h-[100%] ">
             select option
           </div>
         </div>

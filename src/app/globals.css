@@ -2,9 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-.slick-arrow{
+.slick-arrow {
   margin-top: 0px;
   width: 80%;
+}
+.slick-prev:before {
+  color: rgb(140, 140, 140) !important;
+}
+
+.slick-next:before {
+  color: rgb(140, 140, 140) !important;
 }
 
 @layer base {
