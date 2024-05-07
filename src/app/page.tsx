@@ -1,5 +1,5 @@
-import { useGetBanners } from "@/service/query/useGetBanners";
 import React from "react";
+import { useGetBanners } from "@/service/query/useGetBanners";
 import { SimpleSlider } from "@/components/ui/carousel-banner";
 import { GrMenu } from "react-icons/gr";
 import { useGetCategories } from "@/service/query/useGetCategories";
@@ -19,12 +19,17 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
+import { nanoid } from "nanoid";
+import { ProductCard } from "@/components/ui/product-card";
 
 export default async function Home() {
   const data = await useGetBanners();
   const categoryData = await useGetCategories();
   const productData = await useGetProducts();
+
   return (
     <>
       <div className="container">
@@ -115,51 +120,132 @@ export default async function Home() {
 
         <div className="flex items-center flex-wrap justify-between pb-6 ">
           {categoryData.results.slice(0, 8).map((e) => (
-            <CategoryCard title={e.title} image={e.image} />
+            <CategoryCard key={nanoid()} title={e.title} image={e.image} />
           ))}
         </div>
       </div>
 
       <div className="container">
-        <div className="w-[740px]">
-          <Carousel>
-            <CarouselContent>
-              {productData.results.map((e) => (
-                <CarouselItem>
-                  <div className="w-[740px] flex items-center bg-red-500 p-5">
-                    <img
-                      className="w-[315px] h-[315px] object-cover object-center"
-                      src={e.image}
-                      alt="img"
-                    />
-                    <div className="bg-green-300 w-[325px]">
-                      <p>{e.category}</p>
-                      <p>{e.title}</p>
-                      <div className="flex items-end ">
-                        <p className="text-[18px] font-medium">{e.price}</p>
-                        <span className="line-through text-[#A4A4A4] text-[14px]">
-                          {e.price}
-                        </span>
-                      </div>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Atque ducimus eum excepturi esse cum expedita obcaecati.
-                      </p>
-                      <p>Hurry up! Special offer:</p>
-                      <div>
-                        <div>
-                          <span>New:</span> <span>{e.is_new}</span>
+        <div className="flex gap-5 py-5">
+          <div className="first carousel">
+            <div className="w-[650px] ">
+              <div className="flex items-center gap-7 pb-6">
+                <h3 className="font-medium text-[24px]">Top Flash</h3>
+                <p className="text-[24px] font-thin">Deals</p>
+              </div>
+            </div>
+            <div className="w-[650px]">
+              <Carousel>
+                <CarouselContent>
+                  {productData.results.map((e) => (
+                    <CarouselItem>
+                      <div
+                        key={nanoid()}
+                        className="w-[650px] flex items-start gap-4 bg-white p-5"
+                      >
+                        <img
+                          className="w-[245px] h-[245px] object-cover object-center"
+                          src={e.image}
+                          alt="img"
+                        />
+                        <div className="w-[355px]">
+                          <p>
+                            Category id:&nbsp;
+                            <span className="text-bold">{e.category}</span>
+                          </p>
+                          <p className="text-[#0066C0] font-medium text-[16px]">
+                            {e.title}
+                          </p>
+                          <div className="flex items-center py-4">
+                            <p className="text-[18px] font-medium">
+                              {e.price}$&nbsp;
+                            </p>
+                            <span className="line-through text-[#A4A4A4] text-[14px]">
+                              {e.price}$
+                            </span>
+                          </div>
+                          <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit.
+                          </p>
+                          <p className="pt-4 pb-2 font-bold text-[#222222]">
+                            Hurry up! Special offer:
+                          </p>
+                          <div>
+                            <div>
+                              <span>New:</span>
+                              <span>{e.is_new ? "Yes" : "No"}</span>
+                              <span>{e.is_new}</span>
+                            </div>
+                            <div>
+                              <span>Avialable: </span>
+                              <span>{e.is_available ? "Yes" : "No"}</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center justify-between pt-4">
+                            <div className=" bg-[#F0F1F3] rounded-full w-[60px] h-[60px] flex items-center justify-center">
+                              <div className="flex flex-col items-center justify-center">
+                                <p className="text-[#222222]">420</p>
+                                <p className="text-[12px] text-[#999999]">
+                                  DAYS
+                                </p>
+                              </div>
+                            </div>
+                            <div className=" bg-[#F0F1F3] rounded-full w-[60px] h-[60px] flex items-center justify-center">
+                              <div className="flex flex-col items-center justify-center">
+                                <p className="text-[#222222]">17</p>
+                                <p className="text-[12px] text-[#999999]">
+                                  HRS
+                                </p>
+                              </div>
+                            </div>
+                            <div className=" bg-[#F0F1F3] rounded-full w-[60px] h-[60px] flex items-center justify-center">
+                              <div className="flex flex-col items-center justify-center">
+                                <p className="text-[#222222]">36</p>
+                                <p className="text-[12px] text-[#999999]">
+                                  MINS
+                                </p>
+                              </div>
+                            </div>
+                            <div className=" bg-[#F0F1F3] rounded-full w-[60px] h-[60px] flex items-center justify-center">
+                              <div className="flex flex-col items-center justify-center">
+                                <p className="text-[#222222]">12</p>
+                                <p className="text-[12px] text-[#999999]">
+                                  SEC
+                                </p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div>
-                          <span>Avialable: </span> <span>{e.is_available}</span>
-                        </div>
                       </div>
-                    </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            </div>
+          </div>
+          <div className="second carousel">
+            <div className="bg-[#F5F6F9]">
+              <p className="text-[24px] font-medium pb-6">
+                Recent <span className="text-[24px] font-thin">Products</span>
+              </p>
+              <div className="w-[740px] bg-[#F5F6F9]  gap-4 ">
+                <Carousel>
+                  <CarouselContent>
+                    {productData.results.map((e) => (
+                      <CarouselItem className="basis-1/3">
+                        <ProductCard {...e} />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

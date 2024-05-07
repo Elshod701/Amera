@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import React from "react";
 
 interface Props {
@@ -7,7 +8,10 @@ interface Props {
 
 const CategoryCard: React.FC<Props> = ({ title, image }) => {
   return (
-    <div className="w-[350px] h-[130px] flex items-center justify-between px-6 bg-white border border-[#EEEEEE]">
+    <div
+      key={nanoid()}
+      className="w-[350px] h-[130px] flex items-center justify-between px-6 bg-white border border-[#EEEEEE]"
+    >
       <p className="hover:text-yellow-500 cursor-pointer">{title}</p>
       <img
         src={image}
