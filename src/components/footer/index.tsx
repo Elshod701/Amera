@@ -1,13 +1,23 @@
+"use client";
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import footer_img from "@/assets/images/footer.png";
 import Image from "next/image";
 const Footer = () => {
+  const scroll = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <footer className="bg-[#394150]">
-        <Button className="text-center w-[100%] bg-[#4D5669] hover:bg-[#686f82] rounded-none py-[30px]">
+        <Button
+          onClick={scroll}
+          className="text-center w-[100%] bg-[#4D5669] hover:bg-[#686f82] rounded-none py-[30px]"
+        >
           Back to Top
         </Button>
         <div className="container">
