@@ -27,13 +27,19 @@ import { ProductCard } from "@/components/ui/product-card";
 import banner4 from "@/assets/images/banner4.png";
 import banner5 from "@/assets/images/banner5.png";
 import { useGetSub } from "@/service/query/useGetSub";
-
+import { useGetSubVariant } from "@/service/query/useGetProductVariants";
+import subbanner from "@/assets/images/sub-banner-1.png";
+import { SubCard } from "@/components/ui/sub-card";
+import { log } from "console";
 export default async function Home() {
   const data = await useGetBanners();
   const categoryData = await useGetCategories();
   const productData = await useGetProducts();
   const subData = await useGetSub();
-  console.log(subData);
+  const sub = subData.results[0].id;
+
+  const variant_data = await useGetSubVariant(sub);
+
   return (
     <>
       <div className="container">
@@ -260,7 +266,24 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="container"></div>
+      <div className="container">
+        <div className="wrapper pt-5">
+          <div className="title flex items-center gap-2 py-2">
+            <p className="text-2xl font-medium">{subData.results[0].title}</p>
+            <p className="text-2xl">Products</p>
+          </div>
+          <div>
+            <div>
+              <Image src={subbanner} alt="ok" />
+            </div>
+            <div className="">
+              {variant_data.results?.map((e) => (
+                <SubCard {...e} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
