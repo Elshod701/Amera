@@ -27,7 +27,6 @@ import { ProductCard } from "@/components/ui/product-card";
 import banner4 from "@/assets/images/banner4.png";
 import banner5 from "@/assets/images/banner5.png";
 import { useGetSub } from "@/service/query/useGetSub";
-import { SubCard } from "@/components/ui/sub-card";
 
 export default async function Home() {
   const data = await useGetBanners();
@@ -261,9 +260,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="container">
-        
-      </div>
+      <div className="container"></div>
     </>
   );
 }
