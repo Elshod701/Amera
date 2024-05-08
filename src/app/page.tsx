@@ -24,7 +24,8 @@ import {
 } from "@/components/ui/carousel";
 import { nanoid } from "nanoid";
 import { ProductCard } from "@/components/ui/product-card";
-
+import banner4 from "@/assets/images/banner4.png";
+import banner5 from "@/assets/images/banner5.png";
 export default async function Home() {
   const data = await useGetBanners();
   const categoryData = await useGetCategories();
@@ -246,6 +247,13 @@ export default async function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="flex items-center justify-between py-8">
+          <Image width={690}  src={banner4} alt="banner" />
+          <Image width={690} src={banner5} alt="banner" />
         </div>
       </div>
     </>
