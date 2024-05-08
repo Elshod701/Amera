@@ -16,17 +16,11 @@ export const ProductCard: React.FC<Props> = ({ image, title, price, id }) => {
       />
       <div className="content p-3">
         <span className="text-gray-500">ID:{id}</span>
-        <p className="text-[#0066C0] font-medium text-[16px]">{title}</p>
+        <p className="text-[#0066C0] font-medium text-[16px]">
+          {title.length > 20 ? title.slice(0, 20) + "..." : title}
+        </p>
         <p className="text-[#222222] font-bold text=xl mt-10">{price} $</p>
       </div>
     </div>
   );
-};
-
-export const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 3,
 };
