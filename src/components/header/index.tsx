@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
@@ -13,7 +14,7 @@ const Header = () => {
   return (
     <header>
       <div className="container">
-        <div className="nav-up h-12 flex items-center justify-between">
+        <div className="scrollable-section nav-up h-12 flex items-center justify-between">
           <p className="text-sm">Welcome to Worldwide Electronics Store</p>
           <div>
             <div className="nav-up-list flex w-[355px] justify-between ">
@@ -26,7 +27,9 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="nav-middle  w-[100%] border-t border-[#EBEBEB] border-b">
+      <div
+        className=" nav-bottom w-[100%] border-t border-[#EBEBEB] border-b"
+      >
         <div className="container flex items-center justify-between h-[110px]">
           <Link href="/">
             <Image src={logo} width={150} alt="Picture of the author" />
@@ -70,14 +73,6 @@ const Header = () => {
           </div>
         </div>
       </div>
-
-      {/* <div className="nav-bottom h-[55px] flex items-center justify-center ">
-        <div className="container">
-          <div className="wrapper flex items-center justify-between  h-[100%] ">
-            select option
-          </div>
-        </div>
-      </div> */}
     </header>
   );
 };

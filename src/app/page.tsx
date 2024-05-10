@@ -27,6 +27,7 @@ import { useGetSub } from "@/service/query/useGetSub";
 import { useGetSubVariant } from "@/service/query/useGetProductVariants";
 import { useGetBanners } from "@/service/query/useGetBanners";
 import { useGetCategories } from "@/service/query/useGetCategories";
+import { useGetBrands } from "@/service/query/useGetBrands";
 
 import subbanner from "@/assets/images/sub-banner-1.png";
 import banner1 from "@/assets/images/banner1.png";
@@ -42,6 +43,7 @@ export default async function Home() {
   const categoryData = await useGetCategories();
   const productData = await useGetProducts();
   const subData = await useGetSub();
+  const brandData = await useGetBrands();
   const sub = subData.results[0].id;
   const variant_data = await useGetSubVariant(sub);
   const sub1 = subData.results[0].id;
@@ -49,20 +51,20 @@ export default async function Home() {
 
   return (
     <>
-      <div className="container">
+      <div className="container mt-[110px]">
         <div className="wrapper py-5">
           <div className="flex items-start justify-between  h-[500px] ">
-            <div className="text w-[300px] h-[100%] bg-white">
+            <div className="text w-[300px] h-[480px] bg-white">
               <div className="flex items-center gap-3 font-semibold py-2 px-4 border-b-2 border-[#F5F5F5]">
                 <GrMenu />
                 <span>CATEGORIES</span>
               </div>
 
-              <div className="overflow-y-scroll h-[395px]">
+              <div id="cat_bar" className="overflow-y-scroll h-[425px] ">
                 {categoryData.results.map((category) => (
                   <div
                     className="flex items-center gap-3 py-2 px-4 border-b-2 border-[#F5F5F5]"
-                    key={category.id}
+                    key={nanoid()}
                   >
                     <img
                       className="w-[30px]"
@@ -78,8 +80,8 @@ export default async function Home() {
               <SimpleSlider>
                 {data.results.map((banner) => (
                   <div
-                    className="w-[1050px] h-[460px] relative rounded-lg"
-                    key={banner.id}
+                    className="w-[1050px] h-[480px] relative rounded-lg"
+                    key={nanoid()}
                   >
                     <img
                       src={banner.image}
@@ -260,7 +262,7 @@ export default async function Home() {
                 <Carousel>
                   <CarouselContent>
                     {productData.results.map((e) => (
-                      <CarouselItem className="basis-1/3">
+                      <CarouselItem className="basis-1/3" key={nanoid()}>
                         <ProductCard {...e} />
                       </CarouselItem>
                     ))}
@@ -293,7 +295,7 @@ export default async function Home() {
             </div>
             <div className="flex items-center flex-wrap justify-around w-[90%]">
               {variant_data.results.slice(0, 6).map((e) => (
-                <SubCard {...e} />
+                <SubCard key={nanoid()} {...e} />
               ))}
             </div>
           </div>
@@ -309,7 +311,7 @@ export default async function Home() {
           <div className="flex">
             <div className="flex items-center flex-wrap justify-around w-[90%]">
               {variant_data1.results.slice(0, 6).map((e) => (
-                <SubCard {...e} />
+                <SubCard key={nanoid()} {...e} />
               ))}
             </div>
             <div>
@@ -331,7 +333,7 @@ export default async function Home() {
             </div>
             <div className="flex items-center flex-wrap justify-around w-[90%]">
               {variant_data1.results.slice(0, 6).map((e) => (
-                <SubCard {...e} />
+                <SubCard key={nanoid()} {...e} />
               ))}
             </div>
           </div>
@@ -343,6 +345,28 @@ export default async function Home() {
           <Image src={banner1} alt="image" width={460} height={200} />
           <Image src={banner2} alt="image" width={460} height={200} />
           <Image src={banner3} alt="image" width={460} height={200} />
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="wrapper py-5">
+          <div className="title">
+            <h2 className="text-2xl font-medium">Brands</h2>
+            <div className="flex items-center gap-5 flex-wrap justify-around">
+              {brandData.results.slice(0, 14).map((e) => (
+                <div
+                  key={nanoid()}
+                  className="w-[170px] h-[170px] flex  items-center justify-center rounded-2xl shadow-lg bg-white"
+                >
+                  <img
+                    className="block mx-auto w-[120px] h-[120px] object-contain object-center rounded-3xl "
+                    src={e.image}
+                    alt="brand"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>
