@@ -1,6 +1,7 @@
 export interface CategoryList {
   id: number;
   title: string;
+  price: string;
   images: {
     image: string;
     image_id: number;
@@ -23,7 +24,7 @@ export const useGetSubVariant = async (
     const response = await fetch(
       `http://135.181.108.207/product_variant/?product__category=${id}`,
       {
-        next: { revalidate: 300 },
+        next: { revalidate: 3 },
       }
     );
     if (!response.ok) {

@@ -1,20 +1,14 @@
 import React from "react";
-import { useGetBanners } from "@/service/query/useGetBanners";
-import { SimpleSlider } from "@/components/ui/carousel-banner";
+import { nanoid } from "nanoid";
+
 import { GrMenu } from "react-icons/gr";
-import { useGetCategories } from "@/service/query/useGetCategories";
-import { Advert } from "@/components/ui/advert";
 import delivery from "@/assets/icons/delivery.svg";
 import help from "@/assets/icons/delivery.svg";
 import payment from "@/assets/icons/delivery.svg";
 import shop from "@/assets/icons/delivery.svg";
 import service from "@/assets/icons/delivery.svg";
 import Image from "next/image";
-import banner1 from "@/assets/images/banner1.png";
-import banner2 from "@/assets/images/banner2.png";
-import banner3 from "@/assets/images/banner3.png";
-import CategoryCard from "@/components/ui/category-card";
-import { useGetProducts } from "@/service/query/useGetProducts";
+
 import {
   Carousel,
   CarouselContent,
@@ -22,64 +16,83 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { nanoid } from "nanoid";
 import { ProductCard } from "@/components/ui/product-card";
-import banner4 from "@/assets/images/banner4.png";
-import banner5 from "@/assets/images/banner5.png";
+import { SubCard } from "@/components/ui/sub-card";
+import { Advert } from "@/components/ui/advert";
+import { SimpleSlider } from "@/components/ui/carousel-banner";
+import CategoryCard from "@/components/ui/category-card";
+
+import { useGetProducts } from "@/service/query/useGetProducts";
 import { useGetSub } from "@/service/query/useGetSub";
 import { useGetSubVariant } from "@/service/query/useGetProductVariants";
+import { useGetBanners } from "@/service/query/useGetBanners";
+import { useGetCategories } from "@/service/query/useGetCategories";
+
 import subbanner from "@/assets/images/sub-banner-1.png";
-import { SubCard } from "@/components/ui/sub-card";
-import { log } from "console";
+import banner1 from "@/assets/images/banner1.png";
+import banner2 from "@/assets/images/banner2.png";
+import banner3 from "@/assets/images/banner3.png";
+import banner4 from "@/assets/images/banner4.png";
+import banner5 from "@/assets/images/banner5.png";
+import banner6 from "@/assets/images/banner6.png";
+import banner7 from "@/assets/images/banner7.png";
+
 export default async function Home() {
   const data = await useGetBanners();
   const categoryData = await useGetCategories();
   const productData = await useGetProducts();
   const subData = await useGetSub();
   const sub = subData.results[0].id;
-
   const variant_data = await useGetSubVariant(sub);
+  const sub1 = subData.results[0].id;
+  const variant_data1 = await useGetSubVariant(sub1);
 
   return (
     <>
       <div className="container">
-        <div className="flex items-start justify-between  h-[500px] py-5">
-          <div className="text w-[300px] h-[100%] bg-white">
-            <div className="flex items-center gap-3 font-semibold py-2 px-4 border-b-2 border-[#F5F5F5]">
-              <GrMenu />
-              <span>CATEGORIES</span>
-            </div>
+        <div className="wrapper py-5">
+          <div className="flex items-start justify-between  h-[500px] ">
+            <div className="text w-[300px] h-[100%] bg-white">
+              <div className="flex items-center gap-3 font-semibold py-2 px-4 border-b-2 border-[#F5F5F5]">
+                <GrMenu />
+                <span>CATEGORIES</span>
+              </div>
 
-            <div className="overflow-y-scroll h-[395px]">
-              {categoryData.results.map((category) => (
-                <div
-                  className="flex items-center gap-3 py-2 px-4 border-b-2 border-[#F5F5F5]"
-                  key={category.id}
-                >
-                  <img className="w-[30px]" src={category.image} alt="image" />
-                  <span> {category.title}</span>
-                </div>
-              ))}
+              <div className="overflow-y-scroll h-[395px]">
+                {categoryData.results.map((category) => (
+                  <div
+                    className="flex items-center gap-3 py-2 px-4 border-b-2 border-[#F5F5F5]"
+                    key={category.id}
+                  >
+                    <img
+                      className="w-[30px]"
+                      src={category.image}
+                      alt="image"
+                    />
+                    <span> {category.title}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className=" w-[1050px] h-[100%] rounded-lg">
-            <SimpleSlider>
-              {data.results.map((banner) => (
-                <div
-                  className="w-[1050px] h-[460px] relative rounded-lg"
-                  key={banner.id}
-                >
-                  <img
-                    src={banner.image}
-                    alt="image"
-                    className="h-[100%] object-cover w-[1100px] rounded-lg"
-                  />
-                  <p className="absolute top-[100px] w-[400px] left-[5%] text-white font-black text-[54px]">
-                    {banner.title}
-                  </p>
-                </div>
-              ))}
-            </SimpleSlider>
+            <div className=" w-[1050px] h-[100%] rounded-lg">
+              <SimpleSlider>
+                {data.results.map((banner) => (
+                  <div
+                    className="w-[1050px] h-[460px] relative rounded-lg"
+                    key={banner.id}
+                  >
+                    <img
+                      src={banner.image}
+                      alt="image"
+                      className="h-[100%] object-cover w-[1100px] rounded-lg"
+                    />
+                    <p className="absolute top-[100px] w-[400px] left-[5%] text-white font-black text-[54px]">
+                      {banner.title}
+                    </p>
+                  </div>
+                ))}
+              </SimpleSlider>
+            </div>
           </div>
         </div>
       </div>
@@ -116,22 +129,24 @@ export default async function Home() {
 
       <div className="container">
         <div className="flex items-center justify-between pb-6">
+          <Image src={banner1} alt="image" width={460} height={200} />
           <Image src={banner2} alt="image" width={460} height={200} />
           <Image src={banner3} alt="image" width={460} height={200} />
-          <Image src={banner1} alt="image" width={460} height={2 - 0} />
         </div>
       </div>
 
       <div className="container">
-        <div className="flex gap-3 pb-6">
-          <h2 className="text-[24px] font-medium">Top Categories</h2>
-          <p className="text-[24px] font-light">Of The Month</p>
-        </div>
+        <div className="wrapper  py-5">
+          <div className="flex gap-3">
+            <h2 className="text-[24px] font-medium">Top Categories</h2>
+            <p className="text-[24px] font-light">Of The Month</p>
+          </div>
 
-        <div className="flex items-center flex-wrap justify-between pb-6 ">
-          {categoryData.results.slice(0, 8).map((e) => (
-            <CategoryCard key={nanoid()} title={e.title} image={e.image} />
-          ))}
+          <div className="flex items-center flex-wrap justify-between">
+            {categoryData.results.slice(0, 8).map((e) => (
+              <CategoryCard key={nanoid()} title={e.title} image={e.image} />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -267,21 +282,67 @@ export default async function Home() {
       </div>
 
       <div className="container">
-        <div className="wrapper pt-5">
+        <div className="wrapper py-5">
           <div className="title flex items-center gap-2 py-2">
             <p className="text-2xl font-medium">{subData.results[0].title}</p>
             <p className="text-2xl">Products</p>
           </div>
-          <div>
+          <div className="flex">
             <div>
-              <Image src={subbanner} alt="ok" />
+              <Image height={385} width={280} src={subbanner} alt="ok" />
             </div>
-            <div className="">
-              {variant_data.results?.map((e) => (
+            <div className="flex items-center flex-wrap justify-around w-[90%]">
+              {variant_data.results.slice(0, 6).map((e) => (
                 <SubCard {...e} />
               ))}
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="wrapper py-5">
+          <div className="title flex items-center gap-2 py-2">
+            <p className="text-2xl font-medium">{subData.results[1].title}</p>
+            <p className="text-2xl">Products</p>
+          </div>
+          <div className="flex">
+            <div className="flex items-center flex-wrap justify-around w-[90%]">
+              {variant_data1.results.slice(0, 6).map((e) => (
+                <SubCard {...e} />
+              ))}
+            </div>
+            <div>
+              <Image height={385} width={280} src={banner6} alt="ok" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="wrapper pt-5 pb-5">
+          <div className="title flex items-center gap-2 py-2">
+            <p className="text-2xl font-medium">{subData.results[1].title}</p>
+            <p className="text-2xl">Products</p>
+          </div>
+          <div className="flex justify-between">
+            <div>
+              <Image height={385} width={280} src={banner7} alt="ok" />
+            </div>
+            <div className="flex items-center flex-wrap justify-around w-[90%]">
+              {variant_data1.results.slice(0, 6).map((e) => (
+                <SubCard {...e} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="flex items-center justify-between pt-10 pb-5">
+          <Image src={banner1} alt="image" width={460} height={200} />
+          <Image src={banner2} alt="image" width={460} height={200} />
+          <Image src={banner3} alt="image" width={460} height={200} />
         </div>
       </div>
     </>
