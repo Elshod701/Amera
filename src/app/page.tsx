@@ -51,7 +51,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="container mt-[110px]">
+      <div className="container pt-[159px]">
         <div className="wrapper py-5">
           <div className="flex items-start justify-between  h-[500px] ">
             <div className="text w-[300px] h-[480px] bg-white">
@@ -168,7 +168,7 @@ export default async function Home() {
                     <CarouselItem>
                       <div
                         key={nanoid()}
-                        className="w-[650px] flex items-start gap-4 bg-white p-5"
+                        className="w-[650px] h-[360px] flex items-center gap-4 bg-white p-5"
                       >
                         <img
                           className="w-[245px] h-[245px] object-cover object-center"
@@ -176,10 +176,6 @@ export default async function Home() {
                           alt="img"
                         />
                         <div className="w-[355px]">
-                          <p>
-                            Category id:&nbsp;
-                            <span className="text-bold">{e.category}</span>
-                          </p>
                           <p className="text-[#0066C0] font-medium text-[16px]">
                             {e.title}
                           </p>
@@ -191,11 +187,8 @@ export default async function Home() {
                               {e.price}$
                             </span>
                           </div>
-                          <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit.
-                          </p>
-                          <p className="pt-4 pb-2 font-bold text-[#222222]">
+
+                          <p className="pb-2 font-bold text-[#222222]">
                             Hurry up! Special offer:
                           </p>
                           <div>
@@ -349,7 +342,7 @@ export default async function Home() {
       </div>
 
       <div className="container">
-        <div className="wrapper py-5">
+        <div className="wrapper py-5 pb-10">
           <div className="title">
             <h2 className="text-2xl font-medium">Brands</h2>
             <div className="flex items-center gap-5 flex-wrap justify-around">

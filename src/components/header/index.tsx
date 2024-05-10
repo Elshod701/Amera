@@ -27,10 +27,8 @@ const Header = () => {
         </div>
       </div>
 
-      <div
-        className=" nav-bottom w-[100%] border-t border-[#EBEBEB] border-b"
-      >
-        <div className="container flex items-center justify-between h-[110px]">
+      <div className=" nav-bottom w-[100%] border-t border-[#EBEBEB] border-b">
+        <div className="container flex items-center justify-between h-[110px] ">
           <Link href="/">
             <Image src={logo} width={150} alt="Picture of the author" />
           </Link>
