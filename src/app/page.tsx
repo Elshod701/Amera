@@ -50,7 +50,7 @@ export default async function Home() {
   const variant_data1 = await useGetSubVariant(sub1);
 
   return (
-    <>
+    <div className="hidden">
       <div className="container pt-[159px]">
         <div className="wrapper py-5">
           <div className="flex items-start justify-between  h-[500px] ">
@@ -362,6 +362,6 @@ export default async function Home() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
