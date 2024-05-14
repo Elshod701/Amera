@@ -10,13 +10,10 @@ import { CiStar } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoMdArrowBack } from "react-icons/io";
 import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -118,12 +115,12 @@ const Header = () => {
                     </DrawerTitle>
                   </DrawerHeader>
                   <DrawerClose>
-                    <Button
+                    {/* <Button
                       variant="outline"
-                      className="bg-gray-400 text-2xl  text-white mt-[120px] absolute right-3 bottom-[200px] rounded-full w-[50px] h-[50px] sm:hidden "
+                      className="bg-gray-400 text-2xl  text-white mt-[120px] absolute right-3 bottom-[300px] rounded-full w-[50px] h-[50px] md:hidden "
                     >
                       <IoMdArrowBack />
-                    </Button>
+                    </Button> */}
                   </DrawerClose>
                 </DrawerContent>
               </Drawer>

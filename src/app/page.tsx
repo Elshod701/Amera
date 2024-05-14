@@ -50,11 +50,11 @@ export default async function Home() {
   const variant_data1 = await useGetSubVariant(sub1);
 
   return (
-    <div className="hidden">
-      <div className="container pt-[159px]">
+    <>
+      <div className="container pt-[30px] lg:pt-[159px]">
         <div className="wrapper py-5">
           <div className="flex items-start justify-between  h-[500px] ">
-            <div className="text w-[300px] h-[480px] bg-white">
+            <div className="text w-[300px] h-[480px] bg-white hidden xl:inline-block">
               <div className="flex items-center gap-3 font-semibold py-2 px-4 border-b-2 border-[#F5F5F5]">
                 <GrMenu />
                 <span>CATEGORIES</span>
@@ -76,19 +76,19 @@ export default async function Home() {
                 ))}
               </div>
             </div>
-            <div className=" w-[1050px] h-[100%] rounded-lg">
+            <div className=" w-full h-[100%] rounded-lg xl:w-[1050px]">
               <SimpleSlider>
                 {data.results.map((banner) => (
                   <div
-                    className="w-[1050px] h-[480px] relative rounded-lg"
+                    className="w-full h-[480px] relative rounded-lg xl:w-[1050px]"
                     key={nanoid()}
                   >
                     <img
                       src={banner.image}
                       alt="image"
-                      className="h-[100%] object-cover w-[1100px] rounded-lg"
+                      className="h-[100%] object-cover object-right w-[1100px] rounded-lg"
                     />
-                    <p className="absolute top-[100px] w-[400px] left-[5%] text-white font-black text-[54px]">
+                    <p className="absolute top-[100px] w-[400px] left-[5%] text-white font-black text-[32px] xl:text-[54px]">
                       {banner.title}
                     </p>
                   </div>
@@ -99,52 +99,66 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="container">
-        <div className="flex items-center justify-between bg-white py-7  mt-5 mb-10">
-          <Advert
-            src={delivery}
-            title="Free Delivery"
-            desc="For all oders over $120"
-          />
-          <Advert
-            src={payment}
-            title="Safe Payment"
-            desc="100% secure payment"
-          />
-          <Advert
-            src={shop}
-            title="Shop With Confidence"
-            desc="If goods have problems"
-          />
-          <Advert
-            src={help}
-            title="24/7 Help Center"
-            desc="Dedicated 24/7 support"
-          />
-          <Advert
-            src={service}
-            title="Friendly Services"
-            desc="30 day satisfaction guarantee"
-          />
+      <div className="container px-1 lg:px-[40px] ">
+        <div className="flex flex-wrap items-center justify-center  bg-white  mt-5 mb-10 gap-2 xl:gap-0 md:justify-start">
+          <div className="bg-gray-600 py-7">
+            <Advert
+              src={delivery}
+              title="Free Delivery"
+              desc="For all oders over $120"
+            />
+          </div>
+          <div className="bg-gray-600 py-7">
+            <Advert
+              src={payment}
+              title="Safe Payment"
+              desc="100% secure payment"
+            />
+          </div>
+          <div className="bg-gray-600 py-7">
+            <Advert
+              src={shop}
+              title="Shop With Confidence"
+              desc="If goods have problems"
+            />
+          </div>
+          <div className="bg-gray-600 py-7">
+            <Advert
+              src={help}
+              title="24/7 Help Center"
+              desc="Dedicated 24/7 support"
+            />
+          </div>
+          <div className="bg-gray-600 py-7">
+            <Advert
+              src={service}
+              title="Friendly Services"
+              desc="30 day satisfaction guarantee"
+            />
+          </div>
         </div>
       </div>
 
-      <div className="container">
-        <div className="flex items-center justify-between pb-6">
+      <div className="container  px-5 xl:px-10">
+        <div className="flex items-center justify-around gap-3 pb-6 flex-wrap">
           <Image src={banner1} alt="image" width={460} height={200} />
           <Image src={banner2} alt="image" width={460} height={200} />
           <Image src={banner3} alt="image" width={460} height={200} />
         </div>
       </div>
 
-      <div className="container">
+      <div className="container px-5 xl:px-10 ">
         <div className="wrapper  py-5">
           <div className="flex gap-3">
-            <h2 className="text-[24px] font-medium">Top Categories</h2>
-            <p className="text-[24px] font-light">Of The Month</p>
+            <h2 className="text-[18px] font-medium xl:text-[24px]">
+              Top Categories
+            </h2>
+            <p className="text-[18px] font-light xl:text-[24px]">
+              Of The Month
+            </p>
           </div>
 
-          <div className="flex items-center flex-wrap justify-between">
+          <div className="flex items-center flex-wrap justify-around gap-3 pt-4 xl:gap-0 xl:pt-0">
             {categoryData.results.slice(0, 8).map((e) => (
               <CategoryCard key={nanoid()} title={e.title} image={e.image} />
             ))}
@@ -152,30 +166,30 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="container">
-        <div className="flex gap-5 py-5">
-          <div className="first carousel">
-            <div className="w-[650px] ">
+      <div className="container px-5 xl:px-10 ">
+        <div className="flex gap-5 py-5 flex-col xl:flex-row">
+          <div className="first carousel w-full xl:w-[700px]">
+            <div className="w-[100%] xl:w-[650px]">
               <div className="flex items-center gap-7 pb-6">
                 <h3 className="font-medium text-[24px]">Top Flash</h3>
                 <p className="text-[24px] font-thin">Deals</p>
               </div>
             </div>
-            <div className="w-[650px]">
+            <div className="w-[100%]">
               <Carousel>
                 <CarouselContent>
                   {productData.results.map((e) => (
                     <CarouselItem>
                       <div
                         key={nanoid()}
-                        className="w-[650px] h-[360px] flex items-center gap-4 bg-white p-5"
+                        className="w-[100%] flex items-center gap-4 bg-white p-5 flex-col md:flex-row  justify-center xl:justify-between"
                       >
                         <img
-                          className="w-[245px] h-[245px] object-cover object-center"
+                          className="w-[327px] h-[320px] object-contain object-center lg:w-[500px] xl:w-[260px]"
                           src={e.image}
                           alt="img"
                         />
-                        <div className="w-[355px]">
+                        <div className="w-[250px] sm:w-[400px] xl:w-[330px]">
                           <p className="text-[#0066C0] font-medium text-[16px]">
                             {e.title}
                           </p>
@@ -246,16 +260,20 @@ export default async function Home() {
               </Carousel>
             </div>
           </div>
-          <div className="second carousel">
+
+          <div className="second carousel w-full xl:w-[700px]">
             <div className="bg-[#F5F6F9]">
               <p className="text-[24px] font-medium pb-6">
                 Recent <span className="text-[24px] font-thin">Products</span>
               </p>
-              <div className="w-[740px] bg-[#F5F6F9]  gap-4 ">
+              <div className="w-full xl:w-[720px] bg-[#F5F6F9] gap-2">
                 <Carousel>
                   <CarouselContent>
                     {productData.results.map((e) => (
-                      <CarouselItem className="basis-1/3" key={nanoid()}>
+                      <CarouselItem
+                        className="sm:basis-1/2 md:basis-1/3"
+                        key={nanoid()}
+                      >
                         <ProductCard {...e} />
                       </CarouselItem>
                     ))}
@@ -269,24 +287,24 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="container">
-        <div className="flex items-center justify-between py-8">
+      <div className="container px-5 xl:px-10 ">
+        <div className="flex items-center justify-center xl:justify-center gap-6 py-8 flex-wrap">
           <Image width={690} src={banner4} alt="banner" />
           <Image width={690} src={banner5} alt="banner" />
         </div>
       </div>
 
-      <div className="container">
-        <div className="wrapper py-5">
+      <div className="container  px-5 xl:px-10 ">
+        <div className="wrapper py-5 ">
           <div className="title flex items-center gap-2 py-2">
             <p className="text-2xl font-medium">{subData.results[0].title}</p>
             <p className="text-2xl">Products</p>
           </div>
-          <div className="flex">
-            <div>
+          <div className="flex justify-around  lg:justify-normal">
+            <div className="hidden lg:block">
               <Image height={385} width={280} src={subbanner} alt="ok" />
             </div>
-            <div className="flex items-center flex-wrap justify-around w-[90%]">
+            <div className="flex items-center flex-wrap justify-around w-[90%]  gap-3 xl:gap-0 ">
               {variant_data.results.slice(0, 6).map((e) => (
                 <SubCard key={nanoid()} {...e} />
               ))}
@@ -295,37 +313,37 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="container">
-        <div className="wrapper py-5">
+      <div className="container  px-5 xl:px-10 ">
+        <div className="wrapper py-5 ">
           <div className="title flex items-center gap-2 py-2">
-            <p className="text-2xl font-medium">{subData.results[1].title}</p>
+            <p className="text-2xl font-medium">{subData.results[0].title}</p>
             <p className="text-2xl">Products</p>
           </div>
-          <div className="flex">
-            <div className="flex items-center flex-wrap justify-around w-[90%]">
-              {variant_data1.results.slice(0, 6).map((e) => (
+          <div className="flex justify-around  lg:justify-normal">
+            <div className="flex items-center flex-wrap justify-around w-[90%]  gap-3 xl:gap-0 ">
+              {variant_data.results.slice(0, 6).map((e) => (
                 <SubCard key={nanoid()} {...e} />
               ))}
             </div>
-            <div>
+            <div className="hidden lg:block">
               <Image height={385} width={280} src={banner6} alt="ok" />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container">
-        <div className="wrapper pt-5 pb-5">
+      <div className="container  px-5 xl:px-10 ">
+        <div className="wrapper py-5 ">
           <div className="title flex items-center gap-2 py-2">
-            <p className="text-2xl font-medium">{subData.results[1].title}</p>
+            <p className="text-2xl font-medium">{subData.results[0].title}</p>
             <p className="text-2xl">Products</p>
           </div>
-          <div className="flex justify-between">
-            <div>
+          <div className="flex justify-around  lg:justify-normal">
+            <div className="hidden lg:block">
               <Image height={385} width={280} src={banner7} alt="ok" />
             </div>
-            <div className="flex items-center flex-wrap justify-around w-[90%]">
-              {variant_data1.results.slice(0, 6).map((e) => (
+            <div className="flex items-center flex-wrap justify-around w-[90%]  gap-3 xl:gap-0 ">
+              {variant_data.results.slice(0, 6).map((e) => (
                 <SubCard key={nanoid()} {...e} />
               ))}
             </div>
@@ -333,15 +351,15 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="container">
-        <div className="flex items-center justify-between pt-10 pb-5">
+      <div className="container  px-5 xl:px-10  ">
+        <div className="flex items-center pt-10 pb-5 flex-wrap  gap-3 justify-center xl:justify-normal xl:gap-0">
           <Image src={banner1} alt="image" width={460} height={200} />
           <Image src={banner2} alt="image" width={460} height={200} />
           <Image src={banner3} alt="image" width={460} height={200} />
         </div>
       </div>
 
-      <div className="container">
+      <div className="container px-5 xl:px-10  ">
         <div className="wrapper py-5 pb-10">
           <div className="title">
             <h2 className="text-2xl font-medium">Brands</h2>
@@ -362,6 +380,6 @@ export default async function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

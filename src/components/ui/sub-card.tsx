@@ -15,10 +15,10 @@ export const SubCard: React.FC<Props> = ({ images, title, price }) => {
     <>
       <div
         key={nanoid()}
-        className="w-[367px] h-[138px] flex items-center bg-white"
+        className="w-[367px] h-[138px] flex items-center bg-white justify-around xl:justify-normal"
       >
         <img
-          className="w-[130px] h-[130px] object-cover object-center"
+          className="w-[100px] h-[100px] xl:w-[120px] xl:h-[120px] object-cover object-center"
           src={images[0].image}
           alt="img"
         />
