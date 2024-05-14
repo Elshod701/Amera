@@ -86,7 +86,7 @@ const Header = () => {
                 <DrawerTrigger>
                   <GiHamburgerMenu className="text-3xl" />
                 </DrawerTrigger>
-                <DrawerContent className="absolute top-[-100px] z-[7777] py-5 w-[300px] sm:w-[400px]">
+                <DrawerContent className="py-5 w-[300px] sm:w-[400px] h-screen z-[4455]">
                   <div className="p-3 border border-yellow-400 mx-3">
                     <input
                       type="text"
