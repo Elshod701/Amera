@@ -47,6 +47,7 @@ import banner4 from "@/assets/images/banner4.png";
 import banner5 from "@/assets/images/banner5.png";
 import banner6 from "@/assets/images/banner6.png";
 import banner7 from "@/assets/images/banner7.png";
+import Link from "next/link";
 
 export default async function Home() {
   const data = await useGetBanners();
@@ -297,7 +298,9 @@ export default async function Home() {
                         className="sm:basis-1/2 md:basis-1/3"
                         key={nanoid()}
                       >
-                        <ProductCard {...e} />
+                        <Link href={`/shop-single/${e.id}`}>
+                          <ProductCard {...e} />
+                        </Link>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
