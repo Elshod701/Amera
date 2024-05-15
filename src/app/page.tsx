@@ -16,6 +16,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+
 import { ProductCard } from "@/components/ui/product-card";
 import { SubCard } from "@/components/ui/sub-card";
 import { Advert } from "@/components/ui/advert";
@@ -46,12 +56,10 @@ export default async function Home() {
   const brandData = await useGetBrands();
   const sub = subData.results[0].id;
   const variant_data = await useGetSubVariant(sub);
-  const sub1 = subData.results[0].id;
-  const variant_data1 = await useGetSubVariant(sub1);
 
   return (
     <>
-      <div className="container pt-[30px] lg:pt-[159px]">
+      <div className="container pt-[80px] lg:pt-[159px]">
         <div className="wrapper py-5">
           <div className="flex items-start justify-between  h-[500px] ">
             <div className="text w-[300px] h-[480px] bg-white hidden xl:inline-block">
@@ -62,17 +70,32 @@ export default async function Home() {
 
               <div id="cat_bar" className="overflow-y-scroll h-[425px] ">
                 {categoryData.results.map((category) => (
-                  <div
-                    className="flex items-center gap-3 py-2 px-4 border-b-2 border-[#F5F5F5]"
-                    key={nanoid()}
-                  >
-                    <img
-                      className="w-[30px]"
-                      src={category.image}
-                      alt="image"
-                    />
-                    <span> {category.title}</span>
-                  </div>
+                  <>
+                    <Menubar className="flex rounded-none w-full">
+                      <MenubarMenu>
+                        <MenubarTrigger className="flex items-center gap-3 w-[400px]">
+                          <img
+                            src={category.image}
+                            className="w-[30px] h-[30px] object-cover object-center"
+                            alt="cat_img"
+                          />
+                          <p> {category.title}</p>
+                        </MenubarTrigger>
+
+                        <MenubarContent className="ml-[300px] z-[6666]">
+                          <MenubarItem className="w-[600px] h-[300px]">
+                            <img
+                              key={nanoid()}
+                              className="w-[300px] h-[300px] object-center object-cover"
+                              src={category.image}
+                              alt="cat_img"
+                            />
+                            1 <span>{category.title}</span>
+                          </MenubarItem>
+                        </MenubarContent>
+                      </MenubarMenu>
+                    </Menubar>
+                  </>
                 ))}
               </div>
             </div>
@@ -101,35 +124,35 @@ export default async function Home() {
 
       <div className="container px-1 lg:px-[40px] ">
         <div className="flex flex-wrap items-center justify-center  bg-white  mt-5 mb-10 gap-2 xl:gap-0 md:justify-start">
-          <div className="bg-gray-600 py-7">
+          <div className="py-7">
             <Advert
               src={delivery}
               title="Free Delivery"
               desc="For all oders over $120"
             />
           </div>
-          <div className="bg-gray-600 py-7">
+          <div className="py-7">
             <Advert
               src={payment}
               title="Safe Payment"
               desc="100% secure payment"
             />
           </div>
-          <div className="bg-gray-600 py-7">
+          <div className="py-7">
             <Advert
               src={shop}
               title="Shop With Confidence"
               desc="If goods have problems"
             />
           </div>
-          <div className="bg-gray-600 py-7">
+          <div className="py-7">
             <Advert
               src={help}
               title="24/7 Help Center"
               desc="Dedicated 24/7 support"
             />
           </div>
-          <div className="bg-gray-600 py-7">
+          <div className="py-7">
             <Advert
               src={service}
               title="Friendly Services"
@@ -352,6 +375,7 @@ export default async function Home() {
       </div>
 
       <div className="container  px-5 xl:px-10  ">
+        8
         <div className="flex items-center pt-10 pb-5 flex-wrap  gap-3 justify-center xl:justify-normal xl:gap-0">
           <Image src={banner1} alt="image" width={460} height={200} />
           <Image src={banner2} alt="image" width={460} height={200} />
