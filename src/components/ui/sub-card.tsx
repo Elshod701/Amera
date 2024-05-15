@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import Link from "next/link";
 import React from "react";
 interface Props {
   images: {
@@ -10,7 +11,7 @@ interface Props {
   price: string;
 }
 
-export const SubCard: React.FC<Props> = ({ images, title, price }) => {
+export const SubCard: React.FC<Props> = ({ images, title, price, id }) => {
   return (
     <>
       <div
@@ -23,7 +24,9 @@ export const SubCard: React.FC<Props> = ({ images, title, price }) => {
           alt="img"
         />
         <div className="content p-4">
-          <p className="text-[#0066C0]">{title}</p>
+          <Link href={`/shop-single/${id}`}>
+            <p className="text-[#0066C0] hover:text-yellow-400">{title}</p>{" "}
+          </Link>
           <p>Price: {price} UZS </p>
         </div>
       </div>

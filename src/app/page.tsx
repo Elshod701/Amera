@@ -34,7 +34,7 @@ import CategoryCard from "@/components/ui/category-card";
 
 import { useGetProducts } from "@/service/query/useGetProducts";
 import { useGetSub } from "@/service/query/useGetSub";
-import { useGetSubVariant } from "@/service/query/useGetProductVariants";
+import { getProductsVariants } from "@/service/query/useGetProductVariants";
 import { useGetBanners } from "@/service/query/useGetBanners";
 import { useGetCategories } from "@/service/query/useGetCategories";
 import { useGetBrands } from "@/service/query/useGetBrands";
@@ -56,7 +56,7 @@ export default async function Home() {
   const subData = await useGetSub();
   const brandData = await useGetBrands();
   const sub = subData.results[0].id;
-  const variant_data = await useGetSubVariant(sub);
+  const variant_data = await getProductsVariants(sub);
 
   return (
     <>
@@ -72,7 +72,10 @@ export default async function Home() {
               <div id="cat_bar" className="overflow-y-scroll h-[425px] ">
                 {categoryData.results.map((category) => (
                   <>
-                    <Menubar className="flex rounded-none w-full">
+                    <Menubar
+                      key={nanoid()}
+                      className="flex rounded-none w-full"
+                    >
                       <MenubarMenu>
                         <MenubarTrigger className="flex items-center gap-3 w-[400px]">
                           <img
@@ -83,15 +86,24 @@ export default async function Home() {
                           <p> {category.title}</p>
                         </MenubarTrigger>
 
-                        <MenubarContent className="ml-[300px] z-[6666]">
-                          <MenubarItem className="w-[600px] h-[300px]">
+                        <MenubarContent className="ml-[300px] z-[8888]">
+                          <MenubarItem className="w-[600px] h-[300px] flex items-start gap-3">
                             <img
                               key={nanoid()}
                               className="w-[300px] h-[300px] object-center object-cover"
                               src={category.image}
                               alt="cat_img"
                             />
-                            1 <span>{category.title}</span>
+                            <div>
+                              <p className="text-bold pb-3">Sub-categories:</p>
+                              {category.children.map((e) => (
+                                <Link href={`/products/${e.id}`}>
+                                  <p className="hover:text-yellow-400 cursor-pointer text-[16px] pb-2">
+                                    {e.title}
+                                  </p>
+                                </Link>
+                              ))}
+                            </div>
                           </MenubarItem>
                         </MenubarContent>
                       </MenubarMenu>
@@ -210,13 +222,15 @@ export default async function Home() {
                       >
                         <img
                           className="w-[327px] h-[320px] object-contain object-center lg:w-[500px] xl:w-[260px]"
-                          src={e.image}
+                          src={e.images[0].image}
                           alt="img"
                         />
                         <div className="w-[250px] sm:w-[400px] xl:w-[330px]">
-                          <p className="text-[#0066C0] font-medium text-[16px]">
-                            {e.title}
-                          </p>
+                          <Link href={`/shop-single/${e.id}`}>
+                            <p className="text-[#0066C0] font-medium text-[16px] hover:text-yellow-400">
+                              {e.title}
+                            </p>
+                          </Link>
                           <div className="flex items-center py-4">
                             <p className="text-[18px] font-medium">
                               {e.price}$&nbsp;
@@ -377,9 +391,8 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="container  px-5 xl:px-10  ">
-        8
-        <div className="flex items-center pt-10 pb-5 flex-wrap  gap-3 justify-center xl:justify-normal xl:gap-0">
+      <div className="container  px-5 xl:px-10">
+        <div className="flex items-center pt-10 pb-5 flex-wrap  gap-3 justify-center xl:justify-between xl:gap-0">
           <Image src={banner1} alt="image" width={460} height={200} />
           <Image src={banner2} alt="image" width={460} height={200} />
           <Image src={banner3} alt="image" width={460} height={200} />

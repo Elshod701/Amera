@@ -7,7 +7,11 @@ export interface CategoryType {
       id: number;
       title: string;
       image: string;
-      children: {}[];
+      children: {
+        id: number;
+        images: string;
+        title: string;
+      }[];
     }
   ];
 }
