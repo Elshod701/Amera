@@ -2,13 +2,23 @@ import { nanoid } from "nanoid";
 import Link from "next/link";
 import React from "react";
 interface Props {
+  id: number;
+  is_available: boolean;
+  title: string;
+  description: string;
+  category: string;
   images: {
     image: string;
-    image_id: number;
+    order: number;
   }[];
-  title: string;
-  id: number;
-  price: string;
+  product: number;
+  attribute_value: [];
+  other_detail: string;
+  price: number;
+  price_with_discount: string;
+  quantity: number;
+  userCount: number;
+  userPrice: number;
 }
 
 export const SubCard: React.FC<Props> = ({ images, title, price, id }) => {

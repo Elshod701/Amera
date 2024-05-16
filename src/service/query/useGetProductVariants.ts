@@ -24,7 +24,7 @@ interface ProductVariantType {
 }
 
 export const getProductsVariants = async (
-  id: string
+  id: string | number
 ): Promise<ProductVariantType> => {
   try {
     const response = await fetch(
