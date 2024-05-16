@@ -1,5 +1,5 @@
 import React from "react";
-import { SimpleSlider } from "../../carousel-banner";
+import { SimpleSlider } from "@/components/ui/carousel-banner";
 import { useGetBanners } from "@/service/query/useGetBanners";
 import { nanoid } from "nanoid";
 

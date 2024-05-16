@@ -1,5 +1,5 @@
 import React from "react";
-import CategoryCard from "../../category-card";
+import CategoryCard from "@/components/ui/category-card";
 import { nanoid } from "nanoid";
 import { useGetCategories } from "@/service/query/useGetCategories";
 

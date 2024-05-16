@@ -99,3 +99,37 @@ header {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.SimpleCard:hover .HoverCard {
+  display: block;
+  transition: all.3s ease;
+}
+.btn-content {
+  transition: all 0.7s ease;
+  animation: btns 0.5s ease 0.1s both;
+}
+
+@keyframes btns {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.HoverCard img {
+  transition: all 0.2s ease;
+  animation: image 0.7s ease-in-out;
+}
+
+@keyframes image {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
