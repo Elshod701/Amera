@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const page = () => {
+const Cart = () => {
   return (
-    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut odio animi quibusdam doloribus culpa nesciunt voluptas numquam sed hic ducimus natus, beatae itaque temporibus. Earum voluptatum similique quam laboriosam perferendis!</div>
-  )
-}
+    <div className="container pt-[160px]">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut beatae alias
+      odio nesciunt nemo tenetur impedit expedita dolorum? Voluptatum placeat
+      dolore nihil eveniet vel corrupti nesciunt ea fugiat, ad voluptate!
+    </div>
+  );
+};
 
-export default page
+export default Cart;

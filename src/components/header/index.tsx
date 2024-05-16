@@ -78,7 +78,9 @@ const Header = () => {
               </div>
               <div className="flex items-center flex-col">
                 <CiShoppingCart className="text-4xl" />
-                <span className="text-[14px]">My Cart</span>
+                <Link href={"/cart"}>
+                  <span className="text-[14px]">My Cart</span>
+                </Link>
               </div>
             </div>
             <div className="burger inline-block lg:hidden">
@@ -100,9 +102,6 @@ const Header = () => {
                     </DrawerTitle>
                     <DrawerTitle className="pb-3">
                       <Link href="/products">Products</Link>
-                    </DrawerTitle>
-                    <DrawerTitle className="pb-3">
-                      <Link href="/category">Categories</Link>
                     </DrawerTitle>
                     <DrawerTitle className="pb-3">
                       <Link href="/cart">Cart</Link>

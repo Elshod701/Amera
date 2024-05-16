@@ -92,7 +92,7 @@ header {
   left: 50%;
   transform: translate(-50%);
   backdrop-filter: blur(15px);
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
   z-index: 1111;
   width: 100%;
 }

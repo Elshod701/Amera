@@ -7,12 +7,11 @@ import { BsBoxArrowInLeft } from "react-icons/bs";
 import { nanoid } from "nanoid";
 const Products: NextPage<{ params: { id: string } }> = async ({ params }) => {
   const data = await getProductsVariants(params.id);
-  console.log(data);
 
   return (
     <div>
       <section className="pb-10 pt-[160px] bg-white">
-        <div className="container">
+        <div className="container xl:px-10 px-5 mt-[-80px] lg:mt-0">
           {data.results.length > 1 ? (
             <h1 className="text-center py-5 text-blue-500 font-medium text-xl">
               PRODUCTS
@@ -20,8 +19,8 @@ const Products: NextPage<{ params: { id: string } }> = async ({ params }) => {
           ) : (
             ""
           )}
-          <div className="wrapper gap-3 flex flex-wrap justify-between items-start py-10 w-[80%] mx-auto">
-            {data.results.length > 1 ? (
+          <div className="wrapper gap-2 md:gap-6 xl:gap-3 flex flex-wrap justify-center sm:justify-between items-center xl:items-start py-3 xl:py-10 w-[100%] lg:w-[80%] mx-auto ">
+            {data.results.length > 0 ? (
               data.results.map((e) => (
                 <SingleCategoryCard key={nanoid()} {...e} />
               ))

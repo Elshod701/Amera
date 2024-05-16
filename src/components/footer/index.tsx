@@ -20,7 +20,7 @@ const Footer = () => {
         >
           Back to Top
         </Button>
-        <div className="container px-5 xl:px-10">
+        <div className="container px-5 xl:px-10 py-5">
           <div className="footer-wrapper flex flex-wrap gap-10 items-start text-white py-[10px] justify-between w-[100%]  lg:gap-0 lg:w-[80%] lg:py-[70px]">
             <ul className="flex items-start flex-col">
               <h2 className="text-base font-medium mb-6">Company Info</h2>

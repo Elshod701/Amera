@@ -27,10 +27,10 @@ export const SingleCategoryCard: React.FC<Props> = ({
   id,
 }) => {
   return (
-    <div className="SimpleCard w-[250px] h-[380px] relative border border-gray-200 rounded-sm">
+    <div className="SimpleCard w-[200px] h-[290px] md:w-[250px] md:h-[380px] relative border border-gray-200 rounded-sm">
       <div className="img">
         <img
-          className="mx-auto w-[245px] h-[245px] object-cover object-fit "
+          className="mx-auto w-[190px] h-[190px] md:w-[245px] md:h-[245px] object-cover object-fit "
           src={images[0].image}
           alt="image"
         />
