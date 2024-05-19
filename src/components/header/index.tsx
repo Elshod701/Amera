@@ -72,16 +72,14 @@ const Header = () => {
                 <CiUser className="text-4xl" />
                 <span className="text-[14px]">Login</span>
               </div>
-              <div className="flex items-center flex-col">
+              <Link href={"/like"} className="flex items-center flex-col">
                 <CiStar className="text-4xl" />
                 <span className="text-[14px]">Favorites</span>
-              </div>
-              <div className="flex items-center flex-col">
+              </Link>
+              <Link href={"/cart"} className="flex items-center flex-col">
                 <CiShoppingCart className="text-4xl" />
-                <Link href={"/cart"}>
-                  <span className="text-[14px]">My Cart</span>
-                </Link>
-              </div>
+                <span className="text-[14px]">My Cart</span>
+              </Link>
             </div>
             <div className="burger inline-block lg:hidden">
               <Drawer direction="left">

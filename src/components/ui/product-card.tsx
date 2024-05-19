@@ -15,7 +15,7 @@ interface Props {
   quantity: number;
 }
 
-export const ProductCard: React.FC<Props> = (product: Props) => {
+const ProductCard: React.FC<Props> = (product: Props) => {
   return (
     <div className=" bg-white w-full py-3 sm:h-[360px] sm:w-[300px] md:w-[270px] lg:w-[340px] xl:w-[240px]">
       <img
@@ -36,3 +36,5 @@ export const ProductCard: React.FC<Props> = (product: Props) => {
     </div>
   );
 };
+
+export default ProductCard;

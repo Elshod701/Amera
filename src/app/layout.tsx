@@ -3,6 +3,7 @@ import { Rubik } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { Reduxprovider } from "@/provider/redux-provider";
 
 const inter = Rubik({ subsets: ["latin"] });
 
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        <main className="bg-[#F5F6F9]">{children}</main>
-        <Footer />
+        <Reduxprovider>
+          <Header />
+          <main className="bg-[#F5F6F9]">{children}</main>
+          <Footer />
+        </Reduxprovider>
       </body>
     </html>
   );

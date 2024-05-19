@@ -1,6 +1,10 @@
 import React from "react";
-import CategoryCard from "@/components/ui/category-card";
 import { useGetCategories } from "@/service/query/useGetCategories";
+import dynamic from "next/dynamic";
+
+const CategoryCard = dynamic(() => import("@/components/ui/category-card"), {
+  ssr: false,
+});
 
 export default async function CategoryCardSection() {
   const categoryData = await useGetCategories();

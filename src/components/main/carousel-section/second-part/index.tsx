@@ -10,7 +10,12 @@ import {
 } from "@/components/ui/carousel";
 import { nanoid } from "nanoid";
 import Link from "next/link";
-import { ProductCard } from "@/components/ui/product-card";
+import dynamic from "next/dynamic";
+
+const ProductCard = dynamic(() => import("@/components/ui/product-card"), {
+  ssr: false,
+});
+
 export default async function SecondCarouselPart() {
   const productData = await useGetProducts();
 

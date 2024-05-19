@@ -1,13 +1,20 @@
 import { NextPage } from "next";
 import React from "react";
 import { getProductsVariants } from "@/service/query/useGetProductVariants";
-import { SingleCategoryCard } from "@/components/ui/single-card";
 import Link from "next/link";
 import { BsBoxArrowInLeft } from "react-icons/bs";
 import { nanoid } from "nanoid";
+import dynamic from "next/dynamic";
+
+const SingleCategoryCard = dynamic(
+  () => import("@/components/ui/single-card"),
+  {
+    ssr: false,
+  }
+);
+
 const Products: NextPage<{ params: { id: string } }> = async ({ params }) => {
   const data = await getProductsVariants(params.id);
-
   return (
     <div>
       <section className="pb-10 pt-[160px] bg-white">
