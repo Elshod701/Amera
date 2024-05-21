@@ -1,4 +1,7 @@
+import { removeLikeItem } from "@/redux/reducers/like-reducer";
+import { RootState } from "@/redux/store";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 interface Props {
   id: number;
@@ -19,7 +22,22 @@ interface Props {
   price_with_discount: string;
   quantity: number;
 }
-const LikeCard: React.FC<Props> = ({ images, title, price }) => {
+const LikeCard: React.FC<Props> = ({ images, title, price, id }) => {
+  const dispatch = useDispatch();
+
+  const removeItem = (id: number) => {
+    dispatch(removeLikeItem({ id }));
+    console.log(true);
+  };
+
+  function truncateText(text: string, maxLength: number) {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "...";
+    } else {
+      return text;
+    }
+  }
+
   return (
     <div className="SimpleCard pt-5 w-[200px] h-[290px] md:w-[250px] md:h-[380px] relative border border-gray-200 rounded-sm">
       <div className="img">
@@ -40,7 +58,13 @@ const LikeCard: React.FC<Props> = ({ images, title, price }) => {
           src={images[1].image}
           alt="image"
         />
-        <div className="btn-content text-center mt-[50px] flex-col flex gap-3 items-center">
+        <div className="btn-content text-center mt-[10px] flex-col flex gap-3 items-center">
+          <button
+            onClick={() => removeItem(id)}
+            className="btn px-10 py-2 rounded-lg bg-red-600 text-white"
+          >
+            Remove Item
+          </button>
           <button className="btn px-10 py-2 rounded-lg bg-yellow-400 text-black">
             Add to cart
           </button>

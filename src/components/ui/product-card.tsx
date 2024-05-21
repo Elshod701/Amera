@@ -24,7 +24,7 @@ const ProductCard: React.FC<Props> = (product: Props) => {
         className="w-full h-[223px] mx-auto block object-contain object-center"
       />
       <div className="content p-3 mt-0 sm:mt-6 ">
-        <p className="text-[#0066C0] font-medium text-[16px] text-center hover:text-yellow-400">
+        <p className="text-[#0066C0] font-medium text-[16px] text-center hover:text-yellow-400 hover:underline">
           {product?.title.length > 20
             ? product?.title.slice(0, 20) + "..."
             : product?.title}

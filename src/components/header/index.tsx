@@ -1,15 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 import { GiHeadphones } from "react-icons/gi";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { CiStar } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
+
 import {
   Drawer,
   DrawerClose,
@@ -18,6 +18,10 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import dynamic from "next/dynamic";
+const LikeCount = dynamic(() => import("./like-count"), {
+  ssr: false,
+});
 const Header = () => {
   return (
     <header>
@@ -70,17 +74,18 @@ const Header = () => {
             <div className="icons items-center justify-between gap-5 hidden lg:flex">
               <div className="flex items-center flex-col">
                 <CiUser className="text-4xl" />
-                <span className="text-[14px]">Login</span>
+                <p className="text-[14px] hover:text-yellow-400">Login</p>
               </div>
-              <Link href={"/like"} className="flex items-center flex-col">
-                <CiStar className="text-4xl" />
-                <span className="text-[14px]">Favorites</span>
-              </Link>
-              <Link href={"/cart"} className="flex items-center flex-col">
+
+              <LikeCount />
+              <div className="flex items-center flex-col">
                 <CiShoppingCart className="text-4xl" />
-                <span className="text-[14px]">My Cart</span>
-              </Link>
+                <Link href={"/cart"} className="text-[14px]">
+                  My Cart
+                </Link>
+              </div>
             </div>
+
             <div className="burger inline-block lg:hidden">
               <Drawer direction="left">
                 <DrawerTrigger>
@@ -96,19 +101,29 @@ const Header = () => {
                   </div>
                   <DrawerHeader>
                     <DrawerTitle className="pb-3">
-                      <Link href="/">Home</Link>
+                      <Link href="/">
+                        <p>Home</p>
+                      </Link>
                     </DrawerTitle>
                     <DrawerTitle className="pb-3">
-                      <Link href="/products">Products</Link>
+                      <Link href="/products">
+                        <p>Products</p>
+                      </Link>
                     </DrawerTitle>
                     <DrawerTitle className="pb-3">
-                      <Link href="/cart">Cart</Link>
+                      <Link href="/cart">
+                        <p>Cart</p>
+                      </Link>
                     </DrawerTitle>
                     <DrawerTitle className="pb-3">
-                      <Link href="/like">Favourites</Link>
+                      <Link href="/like">
+                        <p>Favourites</p>
+                      </Link>
                     </DrawerTitle>
                     <DrawerTitle className="pb-3 ">
-                      <Link href="/account">Account</Link>
+                      <Link href="/account">
+                        <p>Account</p>
+                      </Link>
                     </DrawerTitle>
                   </DrawerHeader>
                   <DrawerClose>

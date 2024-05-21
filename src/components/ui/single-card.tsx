@@ -23,8 +23,8 @@ interface Props {
 }
 
 const SingleCategoryCard: React.FC<Props> = (product) => {
-  const { likeItem } = useSelector((state: any) => state.like);
   const dispatch = useDispatch();
+
   const addLike = () => {
     try {
       dispatch(addLikeItem(product));

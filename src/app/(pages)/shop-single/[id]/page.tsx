@@ -69,9 +69,6 @@ const SingleProduct: NextPage<{ params: { id: string } }> = async ({
                 <button className="bg-yellow-500 hover:bg-yellow-600 py-2 px-[70px] font-medium rounded-[30px] flex items-center gap-3">
                   <FaCartArrowDown className="text-xl " /> Add to Cart
                 </button>
-                <button className="bg-red-400 text-white font-medium hover:bg-red-500 py-2 px-[50px] rounded-[30px] flex items-center gap-2">
-                  <FaRegHeart className="text-xl " /> Add to favourites
-                </button>
               </div>
             </div>
           </div>

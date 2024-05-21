@@ -14,9 +14,7 @@ const CategoryCard: React.FC<Props> = ({ title, image, id }) => {
       key={nanoid()}
       className="flex items-center justify-between px-6 bg-white border border-[#EEEEEE] w-[455px] h-[190px] p-3 xl:w-[350px] xl:h-[130px]"
     >
-      <Link href={`/category/${id}`}>
-        <p className="hover:text-yellow-500 cursor-pointer">{title}</p>
-      </Link>
+      <p className="hover:text-yellow-500 cursor-pointer">{title}</p>
       <img
         src={image}
         alt="img"

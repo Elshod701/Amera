@@ -36,7 +36,7 @@ export default async function FirstCarouselPart() {
                   />
                   <div className="w-[250px] sm:w-[400px] xl:w-[330px]">
                     <Link href={`/shop-single/${e.id}`}>
-                      <p className="text-[#0066C0] font-medium text-[16px] hover:text-yellow-400">
+                      <p className="text-[#0066C0] font-medium text-[16px] hover:text-yellow-400 hover:underline">
                         {e.title}
                       </p>
                     </Link>

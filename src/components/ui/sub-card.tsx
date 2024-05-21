@@ -21,7 +21,7 @@ interface Props {
   userPrice: number;
 }
 
-export const SubCard: React.FC<Props> = ({ images, title, price, id }) => {
+const SubCard: React.FC<Props> = ({ images, title, price, id }) => {
   return (
     <>
       <div
@@ -35,7 +35,7 @@ export const SubCard: React.FC<Props> = ({ images, title, price, id }) => {
         />
         <div className="content p-4">
           <Link href={`/shop-single/${id}`}>
-            <p className="text-[#0066C0] hover:text-yellow-400">{title}</p>{" "}
+            <p className="text-[#0066C0] hover:text-yellow-400 hover:underline">{title}</p>{" "}
           </Link>
           <p>Price: {price} UZS </p>
         </div>
@@ -43,3 +43,5 @@ export const SubCard: React.FC<Props> = ({ images, title, price, id }) => {
     </>
   );
 };
+
+export default SubCard;

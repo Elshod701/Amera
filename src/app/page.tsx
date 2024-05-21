@@ -1,21 +1,10 @@
 import React from "react";
 import { nanoid } from "nanoid";
-
 import { GrMenu } from "react-icons/gr";
-import delivery from "@/assets/icons/delivery.svg";
-import help from "@/assets/icons/delivery.svg";
-import payment from "@/assets/icons/delivery.svg";
-import shop from "@/assets/icons/delivery.svg";
-import service from "@/assets/icons/delivery.svg";
 import Image from "next/image";
-
-import { SubCard } from "@/components/ui/sub-card";
-import { Advert } from "@/components/ui/advert";
-
 import { useGetSub } from "@/service/query/useGetSub";
 import { getProductsVariants } from "@/service/query/useGetProductVariants";
 import { useGetBrands } from "@/service/query/useGetBrands";
-
 import subbanner from "@/assets/images/sub-banner-1.png";
 import banner1 from "@/assets/images/banner1.png";
 import banner2 from "@/assets/images/banner2.png";
@@ -24,11 +13,39 @@ import banner4 from "@/assets/images/banner4.png";
 import banner5 from "@/assets/images/banner5.png";
 import banner6 from "@/assets/images/banner6.png";
 import banner7 from "@/assets/images/banner7.png";
+import delivery from "@/assets/icons/delivery.svg";
+import help from "@/assets/icons/delivery.svg";
+import payment from "@/assets/icons/delivery.svg";
+import shop from "@/assets/icons/delivery.svg";
+import service from "@/assets/icons/delivery.svg";
 import HeroSlider from "@/components/hero/slider";
 import HerMenubar from "@/components/hero/menubar";
-import CategoryCardSection from "@/components/main/category-card";
-import FirstCarouselPart from "@/components/main/carousel-section/first-part";
-import SecondCarouselPart from "@/components/main/carousel-section/second-part";
+import dynamic from "next/dynamic";
+
+const CategoryCardSection = dynamic(
+  () => import("@/components/main/category-card"),
+  {
+    ssr: false,
+  }
+);
+const FirstCarouselPart = dynamic(
+  () => import("@/components/main/carousel-section/first-part"),
+  {
+    ssr: false,
+  }
+);
+const SecondCarouselPart = dynamic(
+  () => import("@/components/main/carousel-section/second-part"),
+  {
+    ssr: false,
+  }
+);
+const SubCard = dynamic(() => import("@/components/ui/sub-card"), {
+  ssr: false,
+});
+const Advert = dynamic(() => import("@/components/ui/advert"), {
+  ssr: false,
+});
 
 export default async function Home() {
   const subData = await useGetSub();

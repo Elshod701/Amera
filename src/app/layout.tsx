@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Reduxprovider } from "@/provider/redux-provider";
+import { NextProvider } from "@/provider/next-provider";
 
 const inter = Rubik({ subsets: ["latin"] });
 
@@ -18,13 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <Reduxprovider>
-          <Header />
-          <main className="bg-[#F5F6F9]">{children}</main>
-          <Footer />
-        </Reduxprovider>
+        <NextProvider>
+          <Reduxprovider>
+            <Header />
+            <main className="bg-[#F5F6F9]">{children}</main>
+            <Footer />
+          </Reduxprovider>
+        </NextProvider>
       </body>
     </html>
   );
